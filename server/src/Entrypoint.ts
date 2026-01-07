@@ -2,6 +2,7 @@ import http from "http";
 import cors from "cors";
 import express from "express";
 import { AppConfig } from "@Configs/App";
+import { CorsConfig } from "@Configs/Cors";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -32,7 +33,7 @@ const apollo = new ApolloServer({
 
 await apollo.start();
 
-app.use(cors({ origin: "*" }));
+app.use(cors(CorsConfig));
 app.use("/graphql", express.json(), expressMiddleware(apollo));
 
 await new Promise<void>((resolve) => {
