@@ -1,5 +1,5 @@
 import type { JSX } from "react";
 
 export const PlaygroundPage = (): JSX.Element => {
-  return <div>Playground Page</div>;
+  return <div className="font-bold underline">Playground Page</div>;
 };
