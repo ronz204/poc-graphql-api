@@ -1,7 +1,10 @@
 import { yoga } from "@elysiajs/graphql-yoga";
+import cors from "@elysiajs/cors";
 import { Elysia } from "elysia";
 
 const app = new Elysia();
+
+app.use(cors({ origin: "*" }));
 
 app.get("/", () => {
   return { message: "Hello Elysia" };
@@ -9,7 +12,7 @@ app.get("/", () => {
 
 const schema = /* GraphQL */`
   type Query {
-    hi: String
+    hello: String
   }
 `;
 
@@ -17,7 +20,7 @@ app.use(yoga({
   typeDefs: schema,
   resolvers: {
     Query: {
-      hi: () => "Hello from GraphQL Yoga with Elysia!"
+      hello: () => "Hello from GraphQL Yoga with Elysia!"
     }
   },
 }));
