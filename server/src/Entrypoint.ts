@@ -1,5 +1,5 @@
 import { yoga } from "@elysiajs/graphql-yoga";
-import cors from "@elysiajs/cors";
+import { cors } from "@elysiajs/cors";
 import { Elysia } from "elysia";
 
 const app = new Elysia();
