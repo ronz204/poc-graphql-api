@@ -5,12 +5,13 @@
     "dev": "bun run --watch src/Entrypoint.ts"
   },
   "dependencies": {
+    "@elysiajs/graphql-yoga": "^1.4.0",
     "elysia": "latest"
   },
   "devDependencies": {
     "@types/bun": "latest"
   },
-  "private":true,
+  "private": true,
   "type": "module",
   "module": "src/Entrypoint.ts"
 }
