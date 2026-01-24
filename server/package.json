@@ -8,10 +8,15 @@
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
     "@elysiajs/graphql-yoga": "^1.4.0",
-    "elysia": "latest"
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "elysia": "latest",
+    "pg": "^8.17.2"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/pg": "^8.16.0",
+    "prisma": "^7.3.0"
   },
   "private": true,
   "type": "module",
