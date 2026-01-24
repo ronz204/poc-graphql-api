@@ -10,7 +10,7 @@
     "@elysiajs/graphql-yoga": "^1.4.0",
     "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
-    "elysia": "latest",
+    "elysia": "^1.4.22",
     "pg": "^8.17.2"
   },
   "devDependencies": {
