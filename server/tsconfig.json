@@ -27,7 +27,8 @@
     // Path aliases
     "paths": {
       "@Prisma/*": ["./generated/prisma/*"],
-      "@Database/*": ["./src/infrastructure/database/*"]
+      "@Handlers/*": ["./source/Application/Handlers/*"],
+      "@Database/*": ["./src/Infrastructure/Database/*"],
     }
   }
 }
