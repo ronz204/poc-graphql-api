@@ -28,7 +28,7 @@
     "paths": {
       "@Prisma/*": ["./generated/prisma/*"],
       "@Handlers/*": ["./source/Application/Handlers/*"],
-      "@Database/*": ["./src/Infrastructure/Database/*"],
+      "@Database/*": ["./source/Infrastructure/Database/*"],
     }
   }
 }
