@@ -1,18 +1,29 @@
-FROM oven/bun:1.3.5-alpine AS build
+FROM oven/bun:1.3.5-alpine AS base
 WORKDIR /usr/src/app
 
-FROM build AS dependencies
-RUN mkdir -p /temp
+COPY package.json bun.lock ./
 
-COPY package.json bun.lock /temp/
-RUN cd /temp && bun install --frozen-lockfile --production
+FROM base AS development
+COPY . .
 
-FROM build AS release
-COPY --from=dependencies /temp/node_modules ./node_modules
-
-RUN apk add --no-cache curl
-COPY --chown=bun:bun . .
+RUN bun install --frozen-lockfile
 
 USER bun
 EXPOSE 3000
-ENTRYPOINT [ "bun", "run", "prod" ]
+CMD ["bun", "run", "start"]
+
+FROM base AS building
+COPY . .
+
+RUN bun install --frozen-lockfile --production && \
+  bun run build
+
+FROM oven/bun:1.3.5-alpine AS production
+WORKDIR /usr/src/app
+
+RUN addgroup -S graphgroup && adduser -S graphuser -G graphgroup
+COPY --from=building --chown=graphuser:graphgroup /usr/src/app/graph .
+
+USER graphuser
+EXPOSE 3000
+ENTRYPOINT [ "./graph" ]
