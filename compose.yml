@@ -1,7 +1,13 @@
 name: graphql
 
 include:
-  - path: ./docker/database/compose.yml
+  - path: ./server/compose.yml
+
+services:
+  elysia:
+    build:
+      target: production
+    container_name: elysia-prod
 
 volumes:
   graphql-data:
