@@ -10,7 +10,7 @@ RUN bun install --frozen-lockfile
 
 USER bun
 EXPOSE 3000
-CMD ["bun", "run", "start"]
+ENTRYPOINT [ "bun", "run", "start" ]
 
 FROM base AS building
 COPY . .
@@ -23,7 +23,7 @@ WORKDIR /usr/src/app
 
 RUN apk add --no-cache libstdc++ libgcc && \
   addgroup -S graphgroup && adduser -S graphuser -G graphgroup
-  
+
 COPY --from=building --chown=graphuser:graphgroup /usr/src/app/graph .
 
 USER graphuser
