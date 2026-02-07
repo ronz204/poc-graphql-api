@@ -1,9 +1,9 @@
 services:
-  server:
+  elysia:
     build:
       context: .
       dockerfile: dockerfile
-    container_name: graphql-server
+    restart: unless-stopped
     ports:
       - "3000:3000"
     networks:
