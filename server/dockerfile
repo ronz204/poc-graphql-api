@@ -4,11 +4,11 @@ WORKDIR /usr/src/app
 COPY package.json bun.lock ./
 
 FROM base AS development
-COPY . .
-
 RUN bun install --frozen-lockfile
 
+COPY . .
 USER bun
+
 EXPOSE 3000
 ENTRYPOINT [ "bun", "run", "start" ]
 
@@ -16,9 +16,9 @@ FROM base AS dependencies
 RUN bun install --frozen-lockfile --production
 
 FROM base AS building
-COPY . .
-
 COPY --from=dependencies /usr/src/app/node_modules ./node_modules
+
+COPY . .
 RUN bun run build
 
 FROM alpine:3.23 AS production
