@@ -12,11 +12,14 @@ USER bun
 EXPOSE 3000
 ENTRYPOINT [ "bun", "run", "start" ]
 
+FROM base AS dependencies
+RUN bun install --frozen-lockfile --production
+
 FROM base AS building
 COPY . .
 
-RUN bun install --frozen-lockfile --production && \
-  bun run build
+COPY --from=dependencies /usr/src/app/node_modules ./node_modules
+RUN bun run build
 
 FROM alpine:3.23 AS production
 WORKDIR /usr/src/app
