@@ -13,7 +13,7 @@ const app = new Elysia()
   .use(cors({ origin: "*" }))
   .get("/prisma", async () => {
     const users = await Prisma.user.findMany();
-    return users;
+    return { users };
   })
   .get("/", () => {
     return { message: "Hello Elysia" };
