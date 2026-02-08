@@ -2,6 +2,7 @@ name: graphql
 
 include:
   - path: ./server/compose.yml
+  - path: ./docker/database/compose.yml
 
 services:
   elysia:
