@@ -4,12 +4,11 @@ services:
       context: .
       dockerfile: dockerfile
     restart: unless-stopped
+    env_file: ".env"
     ports:
       - "3000:3000"
     networks:
       - graphql-network
-    environment:
-      - DATABASE_URL=postgres://graph:p4ssw0rd@postgres:5432/graphql
     depends_on:
       postgres:
         condition: service_healthy
@@ -23,11 +22,10 @@ services:
       dockerfile: dockerfile
     container_name: migrations
     restart: "no"
+    env_file: ".env"
     networks:
       - graphql-network
     entrypoint: ["bunx", "--bun", "prisma", "migrate", "deploy"]
-    environment:
-      - DATABASE_URL=postgres://graph:p4ssw0rd@postgres:5432/graphql
     depends_on:
       postgres:
         condition: service_healthy
