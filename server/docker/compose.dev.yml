@@ -8,8 +8,6 @@ services:
     container_name: elysia-dev
   
   migrations:
-    build:
-      target: development
     extends:
       service: migrations
       file: compose.base.yml
