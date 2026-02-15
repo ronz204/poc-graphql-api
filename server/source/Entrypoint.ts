@@ -1,7 +1,7 @@
 import { yoga } from "@elysiajs/graphql-yoga";
-import { cors } from "@elysiajs/cors";
 import { Elysia } from "elysia";
 
+import { CorsConfig } from "@Configs/CORS";
 import { AuthController } from "@Controllers/AuthController";
 import { HealthController } from "@Controllers/HealthController";
 
@@ -12,7 +12,7 @@ const schema = /* GraphQL */`
 `;
 
 const app = new Elysia()
-  .use(cors({ origin: "*" }))
+  .use(CorsConfig)
   .use(HealthController)
   .use(AuthController)
   .use(yoga({
