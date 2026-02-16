@@ -1,10 +1,10 @@
 services:
   elysia:
     build:
-      context: ..
+      context: .
       dockerfile: dockerfile
     restart: unless-stopped
-    env_file: "../.env"
+    env_file: ".env"
     ports:
       - "3000:3000"
     networks:
@@ -17,11 +17,11 @@ services:
   
   migrations:
     build:
-      context: ..
+      context: .
       target: development
       dockerfile: dockerfile
     restart: "no"
-    env_file: "../.env"
+    env_file: ".env"
     networks:
       - graphql-network
     entrypoint: ["bunx", "--bun", "prisma", "migrate", "deploy"]
