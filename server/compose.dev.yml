@@ -13,10 +13,9 @@ services:
           path: ./source
           target: /usr/src/app/source
         
-        # Sync Prisma schema changes
-        - action: sync
-          path: ./prisma
-          target: /usr/src/app/prisma
+        # Rebuild when Prisma models change
+        - action: rebuild
+          path: ./prisma/
         
         # Sync package.json for dependency tracking
         - action: sync
