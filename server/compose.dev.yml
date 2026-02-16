@@ -1,0 +1,34 @@
+services:
+  elysia:
+    build:
+      target: development
+    extends:
+      service: elysia
+      file: compose.base.yml
+    container_name: elysia-dev
+    develop:
+      watch:
+        # Sync source code changes
+        - action: sync
+          path: ./source
+          target: /usr/src/app/source
+        
+        # Sync Prisma schema changes
+        - action: sync
+          path: ./prisma
+          target: /usr/src/app/prisma
+        
+        # Sync package.json for dependency tracking
+        - action: sync
+          path: ./package.json
+          target: /usr/src/app/package.json
+        
+        # Rebuild when dependencies change
+        - action: rebuild
+          path: ./bun.lock
+  
+  migrations:
+    extends:
+      service: migrations
+      file: compose.base.yml
+    container_name: migrations-dev
