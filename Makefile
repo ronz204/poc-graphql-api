@@ -1,4 +1,4 @@
-.PHONY: up-dev down-dev up-prod down-prod build-dev build-prod
+.PHONY: up-dev down-dev up-prod down-prod build-dev build-prod migrate
 
 up-dev:
 	docker compose -f compose.dev.yml up --watch
@@ -17,3 +17,6 @@ build-dev:
 
 build-prod:
 	docker compose -f compose.prod.yml up -d --build
+
+migrate:
+	docker compose -f compose.dev.yml up migrations
