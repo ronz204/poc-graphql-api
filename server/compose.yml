@@ -29,8 +29,6 @@ services:
       service: migrations
       file: ./docker/migrations.yml
     container_name: migrations-dev
-    # Do not restart the migrations container
-    restart: "no"
 
 volumes:
   graphql-data:
