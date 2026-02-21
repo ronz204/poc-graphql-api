@@ -1,9 +1,0 @@
-volumes:
-  graphql-data:
-    driver: local
-    name: graphql-data
-
-networks:
-  graphql-network:
-    driver: bridge
-    name: graphql-network
