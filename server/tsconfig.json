@@ -29,7 +29,10 @@
       "@seeders/*": ["./prisma/seeds/*"],
       "@prisma/*": ["./generated/prisma/*"],
 
+      "@shared/*": ["./source/shared/*"],
       "@features/*": ["./source/features/*"],
+      "@database/*": ["./source/database/*"],
+      "@contracts/*": ["./source/contracts/*"],
     }
   }
 }
